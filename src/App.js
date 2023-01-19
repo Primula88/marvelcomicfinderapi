@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// Import components
+import Navbar from "./components/Navbar";
+import NavItem from "./components/Navbar/NavItem";
+import Logo from "./components/Navbar/Logo";
+import HeroDetails from "./components/HeroDetails";
+import Home from "./components/Home";
+import ComicDetails from "./components/ComicDetails.jsx";
+ 
+// Import dependencies
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar logo={<Logo text={"Prim's Marvel Page"} />}>
+        <NavItem to={"/"} text={"Home"} />
+      </Navbar>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/:id" element={<ComicDetails />} />
+      </Routes>
+    </Router>
   );
 }
 
